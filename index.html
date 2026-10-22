@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#14532d">
+<title>جماعت پنجم — 35 منٹ لیسن پلان</title>
+<style>
+:root{--green:#14532d;--green2:#166534;--line:#d1d5db;--bg:#f3f6f4;--ink:#17211b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Nastaliq Urdu","Jameel Noori Nastaleeq","Noto Sans Arabic",Arial,sans-serif;line-height:1.8}
+header{background:linear-gradient(120deg,#14532d,#15803d);color:white;padding:22px 16px;text-align:center}
+header h1{margin:0;font-size:clamp(1.4rem,4vw,2rem)}header p{margin:4px 0 0}
+main{max-width:1100px;margin:22px auto;padding:0 14px 40px}
+.panel{background:white;border:1px solid #e5e7eb;border-radius:14px;padding:18px;margin-bottom:16px;box-shadow:0 3px 12px #00000008}
+h2{color:var(--green);font-size:1.25rem;margin:0 0 12px;border-bottom:2px solid #dcfce7;padding-bottom:5px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+label{display:block;font-weight:700;margin-bottom:3px}
+input,select,textarea{width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:8px;font:inherit;background:#fff;color:#111827}
+textarea{min-height:75px;resize:vertical}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}
+button{border:0;border-radius:9px;padding:10px 16px;font:inherit;font-weight:700;cursor:pointer;background:var(--green);color:white}
+button.secondary{background:#e5e7eb;color:#111827}button:hover{filter:brightness(.96)}
+.hint{font-size:.9rem;color:#4b5563;margin-top:5px}
+.timebar{display:flex;height:16px;overflow:hidden;border-radius:10px;background:#e5e7eb;margin:12px 0}
+.seg{height:100%;min-width:1px}.timelist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.timeitem{border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:flex;justify-content:space-between;gap:8px}
+.timeitem input{width:75px;padding:4px;text-align:center}
+table{width:100%;border-collapse:collapse;margin-top:8px}th,td{border:1px solid #9ca3af;padding:7px;text-align:right;vertical-align:top}th{background:#ecfdf5}
+.output{background:#fff}
+.plan-head{text-align:center;border-bottom:2px solid #166534;padding-bottom:10px;margin-bottom:12px}
+.plan-head h2{border:0;margin:0}
+.plan-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.plan-box{border:1px solid #9ca3af;padding:9px;border-radius:5px;break-inside:avoid}
+.plan-box h3{margin:0 0 4px;color:#14532d;font-size:1rem}
+.plan-box p{margin:0;white-space:pre-wrap}
+footer{text-align:center;color:#6b7280;font-size:.85rem;padding:12px}
+@media(max-width:700px){.grid{grid-template-columns:1fr 1fr}.timelist{grid-template-columns:1fr}.plan-grid{grid-template-columns:1fr}}
+@media(max-width:460px){.grid{grid-template-columns:1fr}}
+@page{size:A4;margin:12mm}
+@media print{
+ body{background:white;font-size:10.5pt;line-height:1.55}
+ header,.form-panel,.actions,.hint,.timebar,.timelist,footer,.no-print{display:none!important}
+ main{max-width:none;margin:0;padding:0}
+ .panel{border:0;box-shadow:none;border-radius:0;padding:0;margin:0}
+ #planOutput{display:block!important}
+ .plan-head{margin-bottom:8px}
+ .plan-grid{grid-template-columns:1fr 1fr;gap:5px}
+ .plan-box{padding:6px}
+ th,td{padding:5px}
+}
+</style>
+</head>
+<body>
+<header>
+<h1>جماعت پنجم — 35 منٹ کا لیسن پلان</h1>
+<p>GPS 278 GB، مرکز روڈالہ</p>
+</header>
+<main>
+<section class="panel form-panel">
+<h2>لیسن پلان کی معلومات</h2>
+<div class="grid">
+<div><label for="school">اسکول کا نام</label><input id="school" value="GPS 278 GB، مرکز روڈالہ"></div>
+<div><label for="teacher">استاد کا نام</label><input id="teacher" value="عمر حیات"></div>
+<div><label for="date">تاریخ</label><input id="date" type="date"></div>
+<div><label for="subject">مضمون</label><select id="subject">
+<option>اردو</option><option>English</option><option>ریاضی</option><option>اسلامیات</option><option>جنرل سائنس</option><option>معاشرتی علوم</option><option>کمپیوٹر</option><option>اخلاقیات</option><option>عمومی معلومات</option><option>آرٹ</option>
+</select></div>
+<div><label for="unit">باب / یونٹ</label><input id="unit" placeholder="مثلاً: سبق نمبر 3"></div>
+<div><label for="topic">سبق کا عنوان</label><input id="topic" placeholder="سبق کا نام درج کریں"></div>
+<div><label for="duration">کل دورانیہ (منٹ)</label><input id="duration" type="number" min="1" max="120" value="35"></div>
+<div><label for="students">طلبہ کی تعداد</label><input id="students" type="number" min="1" value="30"></div>
+<div><label for="method">طریقۂ تدریس</label><select id="method"><option>سوال و جواب، وضاحت اور مشق</option><option>سرگرمی پر مبنی تدریس</option><option>گروپ ورک اور مباحثہ</option><option>نمونہ، مشاہدہ اور عملی کام</option><option>مطالعہ، وضاحت اور تحریری مشق</option></select></div>
+</div>
+<p class="hint">سبق کا عنوان درج کرکے پلان بنائیں۔ وقت خودکار طور پر تقسیم ہوگا اور تمام حصوں کا مجموعہ کل دورانیے کے برابر رہے گا۔</p>
+<div class="actions">
+<button id="generate">لیسن پلان تیار کریں</button>
+<button class="secondary" id="reset">فارم صاف کریں</button>
+</div>
+</section>
+
+<section class="panel form-panel">
+<h2>35 منٹ کی خودکار تقسیم</h2>
+<div class="timebar" id="timebar"></div>
+<div class="timelist" id="timelist"></div>
+<p class="hint" id="totalLabel">کل وقت: 35 منٹ</p>
+</section>
+
+<section class="panel form-panel">
+<h2>مواد میں ترمیم کریں (اختیاری)</h2>
+<div class="grid">
+<div><label for="objectives">سیکھنے کے مقاصد</label><textarea id="objectives">طلبہ سبق کے بنیادی تصور کو سمجھ سکیں گے۔
+طلبہ اہم نکات کی شناخت اور وضاحت کر سکیں گے۔
+طلبہ سیکھی ہوئی بات کو مشق میں استعمال کر سکیں گے۔</textarea></div>
+<div><label for="materials">تدریسی معاونات</label><textarea id="materials">درسی کتاب، تختۂ سفید، مارکر، چارٹ اور ورک شیٹ</textarea></div>
+<div><label for="prior">سابقہ معلومات</label><textarea id="prior">طلبہ سے موضوع سے متعلق آسان سوالات پوچھ کر سابقہ معلومات معلوم کی جائیں گی۔</textarea></div>
+<div><label for="activities">استاد اور طلبہ کی سرگرمیاں</label><textarea id="activities">استاد سبق کا تعارف اور اہم نکات واضح کرے گا۔
+طلبہ سوالات کے جواب دیں گے اور مثالیں پیش کریں گے۔
+طلبہ انفرادی یا جوڑی کی صورت میں مختصر مشق مکمل کریں گے۔</textarea></div>
+<div><label for="assessment">جائزہ / جانچ</label><textarea id="assessment">سبق سے متعلق 3 زبانی سوالات پوچھے جائیں گے۔
+طلبہ سے ایک مختصر تحریری سوال حل کروایا جائے گا۔
+جواب کی بنیاد پر فوری رہنمائی دی جائے گی۔</textarea></div>
+<div><label for="homework">گھر کا کام</label><textarea id="homework">درسی کتاب سے متعلقہ مشق مکمل کریں اور سبق کے اہم نکات دہرائیں۔</textarea></div>
+</div>
+<div class="actions"><button id="updatePlan">پلان اپ ڈیٹ کریں</button></div>
+</section>
+
+<section class="panel output" id="planOutput">
+<div class="plan-head">
+<h2>روزانہ تدریسی منصوبہ — جماعت پنجم</h2>
+<div id="outSchool"></div>
+<div id="outDate"></div>
+</div>
+<div class="grid" id="metaOut"></div>
+<h2 style="margin-top:14px">وقت کی تقسیم اور تدریسی مراحل</h2>
+<table><thead><tr><th>مرحلہ</th><th>وقت</th><th>طریقۂ کار</th></tr></thead><tbody id="stageRows"></tbody><tfoot><tr><th>کل دورانیہ</th><th id="outTotal">35 منٹ</th><th>مکمل</th></tr></tfoot></table>
+<div class="plan-grid" style="margin-top:10px">
+<div class="plan-box"><h3>سیکھنے کے مقاصد</h3><p id="outObjectives"></p></div>
+<div class="plan-box"><h3>تدریسی معاونات</h3><p id="outMaterials"></p></div>
+<div class="plan-box"><h3>سابقہ معلومات</h3><p id="outPrior"></p></div>
+<div class="plan-box"><h3>استاد اور طلبہ کی سرگرمیاں</h3><p id="outActivities"></p></div>
+<div class="plan-box"><h3>جائزہ / جانچ</h3><p id="outAssessment"></p></div>
+<div class="plan-box"><h3>گھر کا کام</h3><p id="outHomework"></p></div>
+</div>
+<p style="margin-top:10px"><strong>استاد کے دستخط:</strong> ____________________　 <strong>ہیڈ ٹیچر:</strong> ____________________</p>
+</section>
+<div class="actions no-print">
+<button id="print">A4 پرنٹ / PDF محفوظ کریں</button>
+<button class="secondary" id="download">متن فائل ڈاؤن لوڈ کریں</button>
+</div>
+<footer>یہ آف لائن چلنے والی ویب ایپ ہے۔ PDF کے لیے پرنٹ مینو میں “Save as PDF” منتخب کریں۔</footer>
+</main>
+<script>
+const stages=[
+ {name:"تعارف اور توجہ حاصل کرنا",pct:14,desc:"مختصر دلچسپ سوال، مثال یا تعارف"},
+ {name:"سابقہ معلومات کی جانچ",pct:14,desc:"سابقہ سبق سے متعلق سوال و جواب"},
+ {name:"سبق کی وضاحت",pct:31,desc:"تصور کی وضاحت، مثالیں اور رہنمائی"},
+ {name:"طلبہ کی سرگرمی / مشق",pct:23,desc:"انفرادی، جوڑی یا گروپ کی مشق"},
+ {name:"جائزہ اور اختتام",pct:12,desc:"سوالات، فوری جانچ اور خلاصہ"},
+ {name:"گھر کا کام",pct:6,desc:"مختصر کام کی وضاحت"}
+];
+const $=id=>document.getElementById(id);
+function getDurations(){
+ const total=Math.max(1,Math.min(120,parseInt($("duration").value)||35));
+ const raw=stages.map(s=>total*s.pct/100), out=raw.map(Math.floor);
+ let left=total-out.reduce((a,b)=>a+b,0);
+ raw.map((v,i)=>({i,rem:v-Math.floor(v)})).sort((a,b)=>b.rem-a.rem).slice(0,left).forEach(x=>out[x.i]++);
+ return out;
+}
+function renderTimes(){
+ const ds=getDurations(),total=ds.reduce((a,b)=>a+b,0);
+ $("timebar").innerHTML=ds.map((d,i)=>`<div class="seg" title="${stages[i].name}: ${d} منٹ" style="width:${d/total*100}%;background:${["#166534","#15803d","#65a30d","#ca8a04","#0284c7","#7c3aed"][i]}"></div>`).join("");
+ $("timelist").innerHTML=stages.map((s,i)=>`<div class="timeitem"><span>${s.name}</span><strong>${ds[i]} منٹ</strong></div>`).join("");
+ $("totalLabel").textContent=`کل وقت: ${total} منٹ`;
+}
+function val(id){return $(id).value.trim()}
+function lines(id){return val(id)||"درج نہیں کیا گیا۔"}
+function buildPlan(){
+ const ds=getDurations(), total=ds.reduce((a,b)=>a+b,0);
+ const topic=val("topic")||"سبق کا عنوان درج کریں";
+ const subject=val("subject");
+ $("outSchool").textContent=val("school");
+ $("outDate").textContent="تاریخ: "+(val("date")||"____________");
+ $("metaOut").innerHTML=[
+ ["استاد",val("teacher")||"____________"],["جماعت","پنجم"],["مضمون",subject],
+ ["باب / یونٹ",val("unit")||"____________"],["سبق کا عنوان",topic],["طلبہ",val("students")+" طلبہ"],
+ ["دورانیہ",total+" منٹ"],["طریقۂ تدریس",val("method")],["سیکھنے کا مرکز",topic]
+ ].map(x=>`<div><strong>${x[0]}:</strong> ${x[1]}</div>`).join("");
+ $("stageRows").innerHTML=stages.map((s,i)=>`<tr><td>${s.name}</td><td>${ds[i]} منٹ</td><td>${s.desc}</td></tr>`).join("");
+ $("outTotal").textContent=total+" منٹ";
+ ["objectives","materials","prior","activities","assessment","homework"].forEach(k=>$("out"+k[0].toUpperCase()+k.slice(1)).textContent=lines(k));
+ renderTimes();
+}
+$("generate").addEventListener("click",buildPlan);
+$("updatePlan").addEventListener("click",buildPlan);
+$("duration").addEventListener("input",()=>{renderTimes();buildPlan()});
+$("print").addEventListener("click",()=>{buildPlan();window.print()});
+$("reset").addEventListener("click",()=>{
+ ["unit","topic"].forEach(k=>$(k).value="");
+ $("subject").selectedIndex=0;$("duration").value=35;$("students").value=30;
+ $("objectives").value="طلبہ سبق کے بنیادی تصور کو سمجھ سکیں گے۔\nطلبہ اہم نکات کی شناخت اور وضاحت کر سکیں گے۔\nطلبہ سیکھی ہوئی بات کو مشق میں استعمال کر سکیں گے۔";
+ $("materials").value="درسی کتاب، تختۂ سفید، مارکر، چارٹ اور ورک شیٹ";
+ $("prior").value="طلبہ سے موضوع سے متعلق آسان سوالات پوچھ کر سابقہ معلومات معلوم کی جائیں گی۔";
+ $("activities").value="استاد سبق کا تعارف اور اہم نکات واضح کرے گا۔\nطلبہ سوالات کے جواب دیں گے اور مثالیں پیش کریں گے۔\nطلبہ انفرادی یا جوڑی کی صورت میں مختصر مشق مکمل کریں گے۔";
+ $("assessment").value="سبق سے متعلق 3 زبانی سوالات پوچھے جائیں گے۔\nطلبہ سے ایک مختصر تحریری سوال حل کروایا جائے گا۔\nجواب کی بنیاد پر فوری رہنمائی دی جائے گی۔";
+ $("homework").value="درسی کتاب سے متعلقہ مشق مکمل کریں اور سبق کے اہم نکات دہرائیں۔";
+ renderTimes();buildPlan();
+});
+$("download").addEventListener("click",()=>{
+ buildPlan();
+ const content=[
+ "روزانہ تدریسی منصوبہ — جماعت پنجم",val("school"),"تاریخ: "+(val("date")||"________"),
+ "استاد: "+val("teacher"),"مضمون: "+val("subject"),"باب: "+val("unit"),"سبق: "+(val("topic")||"________"),
+ "دورانیہ: "+val("duration")+" منٹ","",
+ ...stages.map((s,i)=>`${s.name}: ${getDurations()[i]} منٹ — ${s.desc}`),
+ "","سیکھنے کے مقاصد:\n"+lines("objectives"),"تدریسی معاونات:\n"+lines("materials"),
+ "سابقہ معلومات:\n"+lines("prior"),"سرگرمیاں:\n"+lines("activities"),"جائزہ:\n"+lines("assessment"),"گھر کا کام:\n"+lines("homework")
+ ].join("\n");
+ const blob=new Blob(["\ufeff"+content],{type:"text/plain;charset=utf-8"});
+ const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="grade5-lesson-plan.txt";a.click();URL.revokeObjectURL(a.href);
+});
+buildPlan();
+</script>
+</body>
+</html>
